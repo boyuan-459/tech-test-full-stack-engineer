@@ -5,14 +5,20 @@ import { Job } from '../../model'
 const router = express.Router()
 
 router.get('/:status', async (req, res) => {
-    const leads = await Job.findAll({
+    const { page, pageSize } = req.query
+    const limit = parseInt(pageSize as string) || 2
+    const offset = (parseInt(page as string) - 1) * limit
+    const { count, rows } = await Job.findAndCountAll({
         where: {
             status: req.params.status,
         },
+        limit,
+        offset,
         include: [ Job.associations.suburb, Job.associations.category ],
     })
     return res.json({
-        leads,
+        totalPage: Math.ceil(count / limit),
+        leads: rows,
     })
 })
 

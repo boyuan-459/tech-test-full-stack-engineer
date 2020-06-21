@@ -1,7 +1,7 @@
 import axiosInstance from './axiosInstance'
 
-export function list ({ status, page }) {
-    return axiosInstance.get(`/leads/${status}?page=${page}`).then(result => {
+export function list ({ status, page, pageSize }) {
+    return axiosInstance.get(`/leads/${status}?page=${page}&pageSize=${pageSize}`).then(result => {
             return Promise.resolve(result.data)
         }).catch(error => {
             return Promise.reject(error.data)
