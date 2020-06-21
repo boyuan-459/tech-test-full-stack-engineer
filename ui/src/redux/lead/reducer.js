@@ -22,6 +22,7 @@ export default function leadReducer (state = initState, action) {
             return state.set('page', action.page)
         case actions.CHANGE_STATUS:
             return state.set('status', action.status)
+                    .set('page', 1)
         default:
             return state
     }
