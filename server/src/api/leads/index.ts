@@ -5,14 +5,14 @@ import { Job } from '../../model'
 const router = express.Router()
 
 router.get('/:status', async (req, res) => {
-    const jobs = await Job.findAll({
+    const leads = await Job.findAll({
         where: {
             status: req.params.status,
         },
         include: [ Job.associations.suburb, Job.associations.category ],
     })
     return res.json({
-        jobs,
+        leads,
     })
 })
 
@@ -24,7 +24,7 @@ router.post('/:id/accept', async (req, res) => {
     })
     return res.json({
         status: 'accepted',
-        id: req.params.id
+        id: parseInt(req.params.id),
     })
 })
 
@@ -36,7 +36,7 @@ router.post('/:id/decline', async (req, res) => {
     })
     return res.json({
         status: 'declined',
-        id: req.params.id,
+        id: parseInt(req.params.id),
     })
 })
 
