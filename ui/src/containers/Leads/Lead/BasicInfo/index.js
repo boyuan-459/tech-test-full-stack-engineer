@@ -11,7 +11,7 @@ const BasicInfo = ({ lead }) => {
                 <Avatar justify="center" align="center">{lead.contact_name.charAt(0)}</Avatar>
             </Box>
             <Box direction="column">
-                <Name>{lead.contact_name}</Name>
+                <Name>{lead.status === 'new' ? lead.contact_name.split(' ')[0] : lead.contact_name}</Name>
                 <DateWrapper>{format(new Date(lead.created_at), 'MMM d @ h:mm a')}</DateWrapper>
             </Box>
         </Wrapper>
