@@ -6,4 +6,5 @@ Implement new feature such as paginator
 
 Todo(if has more time):
 Unit test with Jest
+
 End to end test with Cypress
