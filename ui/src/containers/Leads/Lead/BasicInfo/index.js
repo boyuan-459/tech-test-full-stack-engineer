@@ -12,7 +12,7 @@ const BasicInfo = ({ lead }) => {
             </Box>
             <Box direction="column">
                 <Name>{lead.status === 'new' ? lead.contact_name.split(' ')[0] : lead.contact_name}</Name>
-                <DateWrapper>{format(new Date(lead.created_at), 'MMM d @ h:mm a')}</DateWrapper>
+                <DateWrapper>{format(new Date(lead.created_at), 'MMMM d @ h:mm a')}</DateWrapper>
             </Box>
         </Wrapper>
     )
